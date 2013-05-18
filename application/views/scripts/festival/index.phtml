@@ -1,0 +1,30 @@
+<?php         
+$this->title = "Festivals";
+//$this->headTitle($this->title);
+?>
+<p>
+ 	<a href="<?php echo $this->url(array('controller'=>'festival', 
+        'action'=>'add'));?>">Add new festival</a>
+        
+</p>
+
+<table cellpadding="5" cellspacing="20">
+	<tr>
+		<td><strong>Festival Name</strong></td>
+		<td><strong>City</strong></td>
+		<td><strong>Edition</strong></td>
+		<td><strong>Date</strong></td>
+	</tr>
+	<?php foreach ($this->entries as $entry): ?>
+	<tr>
+    <td><?php echo $this->escape($entry->name) ?></td>
+    <td><?php echo $this->escape($entry->location) ?></td>
+    <td><?php echo $this->escape($entry->edition) ?></td>
+    <td><?php echo $this->escape($entry->date) ?></td>
+    <td><a href="<?php echo $this->url(array('controller'=>'festival', 
+        'action'=>'edit', 'id'=> $this->escape($entry->id)));?>">Edit</a></td>
+    <td><a href="<?php echo $this->url(array('controller'=>'festival', 
+            'action'=>'delete', 'id'=> $this->escape($entry->id)));?>">Remove</a></td>
+    </tr>
+    <?php endforeach ?>
+</table>
